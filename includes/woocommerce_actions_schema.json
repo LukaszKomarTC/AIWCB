@@ -1,0 +1,347 @@
+{
+  "actions": [
+    {
+      "action": "woocommerce/check_availability",
+      "description": "Check availability for a booking product.",
+      "required": [
+        "product_id",
+        "date"
+      ],
+      "optional": [
+        "resource_id",
+        "quantity"
+      ],
+      "example": {
+        "action": "woocommerce/check_availability",
+        "parameters": {
+          "product_id": 81,
+          "date": "2025-07-30",
+          "resource_id": 12
+        }
+      }
+    },
+    {
+      "action": "woocommerce/create_booking",
+      "description": "Create a new booking.",
+      "required": [
+        "product_id",
+        "date",
+        "customer_name or customer_id"
+      ],
+      "optional": [
+        "resource_id",
+        "quantity",
+        "email",
+        "notes"
+      ],
+      "example": {
+        "action": "woocommerce/create_booking",
+        "parameters": {
+          "product_id": 81,
+          "resource_id": 12,
+          "date": "2025-07-30",
+          "customer_name": "John Doe"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/update_booking",
+      "description": "Update an existing booking.",
+      "required": [
+        "booking_id"
+      ],
+      "optional": [
+        "date",
+        "resource_id",
+        "quantity",
+        "notes"
+      ],
+      "example": {
+        "action": "woocommerce/update_booking",
+        "parameters": {
+          "booking_id": 453,
+          "date": "2025-08-01"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/cancel_booking",
+      "description": "Cancel a booking.",
+      "required": [
+        "booking_id"
+      ],
+      "optional": [
+        "reason"
+      ],
+      "example": {
+        "action": "woocommerce/cancel_booking",
+        "parameters": {
+          "booking_id": 453,
+          "reason": "Customer requested cancellation"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/change_booking_status",
+      "description": "Change booking status.",
+      "required": [
+        "booking_id",
+        "status"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/change_booking_status",
+        "parameters": {
+          "booking_id": 453,
+          "status": "confirmed"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/get_booking_details",
+      "description": "Get details for a specific booking.",
+      "required": [
+        "booking_id"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/get_booking_details",
+        "parameters": {
+          "booking_id": 453
+        }
+      }
+    },
+    {
+      "action": "woocommerce/list_bookings",
+      "description": "List bookings, optionally filtered by date or status.",
+      "required": [],
+      "optional": [
+        "date_from",
+        "date_to",
+        "status",
+        "customer_id"
+      ],
+      "example": {
+        "action": "woocommerce/list_bookings",
+        "parameters": {
+          "date_from": "2025-07-27",
+          "date_to": "2025-07-30"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/get_customer_bookings",
+      "description": "Get all bookings for a specific customer.",
+      "required": [
+        "customer_id or email"
+      ],
+      "optional": [
+        "status"
+      ],
+      "example": {
+        "action": "woocommerce/get_customer_bookings",
+        "parameters": {
+          "email": "john@example.com"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/list_products",
+      "description": "List WooCommerce products.",
+      "required": [],
+      "optional": [
+        "type"
+      ],
+      "example": {
+        "action": "woocommerce/list_products",
+        "parameters": {
+          "type": "booking"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/list_resources",
+      "description": "List resources for a product.",
+      "required": [
+        "product_id"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/list_resources",
+        "parameters": {
+          "product_id": 81
+        }
+      }
+    },
+    {
+      "action": "woocommerce/create_order",
+      "description": "Create a WooCommerce order.",
+      "required": [
+        "customer_id or email",
+        "items"
+      ],
+      "optional": [
+        "coupon",
+        "notes",
+        "payment_method"
+      ],
+      "example": {
+        "action": "woocommerce/create_order",
+        "parameters": {
+          "customer_id": 15,
+          "items": [
+            {
+              "product_id": 81,
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "action": "woocommerce/update_order_status",
+      "description": "Update order status.",
+      "required": [
+        "order_id",
+        "status"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/update_order_status",
+        "parameters": {
+          "order_id": 1203,
+          "status": "completed"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/get_order_details",
+      "description": "Get WooCommerce order details.",
+      "required": [
+        "order_id"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/get_order_details",
+        "parameters": {
+          "order_id": 1203
+        }
+      }
+    },
+    {
+      "action": "woocommerce/refund_order",
+      "description": "Refund an order.",
+      "required": [
+        "order_id",
+        "amount"
+      ],
+      "optional": [
+        "reason"
+      ],
+      "example": {
+        "action": "woocommerce/refund_order",
+        "parameters": {
+          "order_id": 1203,
+          "amount": 50,
+          "reason": "Customer request"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/send_payment_link",
+      "description": "Send a payment link for an order.",
+      "required": [
+        "order_id"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/send_payment_link",
+        "parameters": {
+          "order_id": 1203
+        }
+      }
+    },
+    {
+      "action": "woocommerce/get_customer_info",
+      "description": "Get customer details.",
+      "required": [
+        "customer_id or email"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/get_customer_info",
+        "parameters": {
+          "email": "john@example.com"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/create_customer",
+      "description": "Create a new customer.",
+      "required": [
+        "email",
+        "first_name",
+        "last_name"
+      ],
+      "optional": [
+        "phone",
+        "address",
+        "password"
+      ],
+      "example": {
+        "action": "woocommerce/create_customer",
+        "parameters": {
+          "email": "john@example.com",
+          "first_name": "John",
+          "last_name": "Doe"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/resend_confirmation",
+      "description": "Resend booking confirmation email.",
+      "required": [
+        "booking_id"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/resend_confirmation",
+        "parameters": {
+          "booking_id": 453
+        }
+      }
+    },
+    {
+      "action": "woocommerce/add_note_to_booking",
+      "description": "Add a note to a booking.",
+      "required": [
+        "booking_id",
+        "note"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/add_note_to_booking",
+        "parameters": {
+          "booking_id": 453,
+          "note": "Customer will bring own pedals"
+        }
+      }
+    },
+    {
+      "action": "woocommerce/apply_coupon",
+      "description": "Apply a coupon to an order.",
+      "required": [
+        "order_id",
+        "coupon_code"
+      ],
+      "optional": [],
+      "example": {
+        "action": "woocommerce/apply_coupon",
+        "parameters": {
+          "order_id": 1203,
+          "coupon_code": "SUMMER10"
+        }
+      }
+    }
+  ]
+}
